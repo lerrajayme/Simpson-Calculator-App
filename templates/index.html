@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Home - Simpson's 1/3 Rule{% endblock %}
+{% block content %}
+<h1>Composite Simpson's 1/3 Rule</h1>
+<p>Welcome to the interactive web application for numerical integration using the <strong>Composite Simpson's 1/3 Rule</strong>.</p>
+<p>This method approximates the definite integral of a function by dividing the interval into an even number of subintervals and using quadratic polynomials.</p>
+<ul>
+    <li><a href="{{ url_for('method') }}">📖 Learn the mathematical background</a></li>
+    <li><a href="{{ url_for('examples') }}">🧮 See two worked examples with step-by-step solutions</a></li>
+    <li><a href="{{ url_for('calculator') }}">🧪 Try the interactive calculator</a></li>
+</ul>
+{% endblock %}

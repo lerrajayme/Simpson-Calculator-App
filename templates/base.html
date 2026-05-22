@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Numerical Methods: Simpson's 1/3 Rule{% endblock %}</title>
+    <!-- MathJax for LaTeX -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+        }
+        nav {
+            background: #2c3e50;
+            padding: 1rem;
+        }
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .error {
+            color: #e74c3c;
+            background: #fdecea;
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+        .result {
+            color: #27ae60;
+            background: #eafaf1;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        input, button {
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            font-size: 1rem;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .example-step {
+            background: #ecf0f1;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 5px solid #3498db;
+        }
+        li {
+            overflow-wrap: break-word;      /* forced break kung kinahanglan */
+            word-break: break-word;         /* safe break sa words/expressions */
+            white-space: normal;            /* siguraduhin nga mag-wrap */
+        }
+
+/* Optional: para sa mathjax output mismo */
+.math {
+    overflow-x: auto;               /* kung gusto og horizontal scroll instead of wrapping */
+    overflow-wrap: break-word;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('method') }}">Method</a>
+        <a href="{{ url_for('examples') }}">Examples</a>
+        <a href="{{ url_for('calculator') }}">Calculator</a>
+    </nav>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

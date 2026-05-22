@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Interactive Calculator{% endblock %}
+{% block content %}
+<h1>Composite Simpson's 1/3 Calculator</h1>
+<p>Enter the function, limits, and an <strong>even number of subintervals n</strong>.</p>
+<form method="POST">
+    <div>
+        <label>f(x) = </label>
+        <input type="text" name="function" placeholder="e.g., x**2, sin(x), exp(-x), log(x+1)" required size="40">
+        <small>Use Python syntax: ** for power, sin, cos, exp, log, etc. (from math module)</small>
+    </div>
+    <div>
+        <label>Lower limit a = </label>
+        <input type="number" name="a" step="any" required>
+    </div>
+    <div>
+        <label>Upper limit b = </label>
+        <input type="number" name="b" step="any" required>
+    </div>
+    <div>
+        <label>Number of subintervals n (must be even): </label>
+        <input type="number" name="n" step="2" min="2" required>
+    </div>
+    <button type="submit">Compute Integral</button>
+</form>
+
+{% if result is not none %}
+    <div class="result">
+        <h3>📊 Approximation:</h3>
+        <p>\[ \int_{a}^{b} f(x) \, dx \approx {{ result }} \]</p>
+    </div>
+{% endif %}
+
+{% if error %}
+    <div class="error">
+        <h3>⚠️ Error:</h3>
+        <p>{{ error }}</p>
+        <p>Make sure n is even and your function uses valid math syntax.</p>
+    </div>
+{% endif %}
+{% endblock %}
