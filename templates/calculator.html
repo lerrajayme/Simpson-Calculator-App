@@ -29,6 +29,13 @@
         <h3>📊 Approximation:</h3>
         <p>\[ \int_{a}^{b} f(x) \, dx \approx {{ result }} \]</p>
     </div>
+    
+    {% if steps %}
+    <div class="example-step">
+        <h3>📝 Step‑by‑Step Calculation</h3>
+        {{ steps|safe }}
+    </div>
+    {% endif %}
 {% endif %}
 
 {% if error %}
