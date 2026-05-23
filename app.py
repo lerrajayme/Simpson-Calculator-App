@@ -1,12 +1,41 @@
+"""
+Composite Simpson's 1/3 Rule - Numerical Integration Web App
+------------------------------------------------------------
+Flask application that provides mathematical discussion, worked examples,
+and an interactive calculator with step-by-step solutions.
+"""
+
 from flask import Flask, render_template, request
 import math
 
 app = Flask(__name__)
-app.secret_key = 'your-secret-key-change-this'
+app.secret_key = 'simpsonscalc_123'
 
 def composite_simpson_1_3_with_steps(f, a, b, n):
     """
-    Returns (result, steps_html) where steps_html contains step-by-step explanation.
+     Approximate the definite integral using Composite Simpson's 1/3 rule.
+
+    Parameters:
+    -----------
+    f : callable
+        The function to integrate, f(x).
+    a : float
+        Lower limit of integration.
+    b : float
+        Upper limit of integration.
+    n : int
+        Number of subintervals (must be even).
+
+    Returns:
+    --------
+    tuple (float, str)
+        - Approximated integral value.
+        - HTML string containing step-by-step solution.
+
+    Raises:
+    -------
+    ValueError
+        If n is not even.
     """
     if n % 2 != 0:
         raise ValueError("Number of subintervals n must be even.")
