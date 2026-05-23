@@ -12,10 +12,43 @@ import re
 app = Flask(__name__)
 app.secret_key = 'your-secret-key-change-this'
 
-def composite_simpson_1_3_with_steps(f, a, b, n):
-    """
-    Returns (result, steps_html) where steps_html contains step-by-step explanation.
-    """
+def python_to_latex(expr):
+    """Convert Python math expression to LaTeX."""
+    expr = expr.replace('**', '^')
+    expr = expr.replace('*', '')
+    expr = expr.replace('sin', '\\sin')
+    expr = expr.replace('cos', '\\cos')
+    expr = expr.replace('tan', '\\tan')
+    expr = expr.replace('exp', 'e')
+    expr = expr.replace('log', '\\ln')
+    expr = expr.replace('sqrt', '\\sqrt')
+    if 'e^' in expr:
+        expr = expr.replace('e^', 'e^{') + '}'
+    return expr
+
+def add_math_prefix(expr):
+    """Add 'math.' prefix to common math functions."""
+    math_funcs = ['sin', 'cos', 'tan', 'asin', 'acos', 'atan', 
+                  'sinh', 'cosh', 'tanh', 'exp', 'log', 'log10', 
+                  'sqrt', 'ceil', 'floor', 'fabs']
+    for func in math_funcs:
+        expr = re.sub(rf'(?<!\wmath\.){func}\s*\(', f'math.{func}(', expr)
+    return expr
+
+def eval_limit(limit_str):
+    """Safely evaluate expressions containing pi and e."""
+    expr = limit_str.strip().lower()
+    expr = expr.replace('pi', 'math.pi')
+    expr = expr.replace('e', 'math.e')
+    allowed_locals = {'math': math}
+    try:
+        result = eval(expr, {"__builtins__": {}}, allowed_locals)
+        return float(result)
+    except Exception:
+        raise ValueError(f"Invalid limit expression: '{limit_str}'. Use numbers, pi, e, and operators + - * / ** ( )")
+
+def composite_simpson_1_3_with_steps(f, a, b, n, func_latex, a_display, b_display):
+    """Returns (result, steps_html) with step-by-step explanation."""
     if n % 2 != 0:
         raise ValueError("Number of subintervals n must be even.")
     
@@ -70,7 +103,7 @@ def composite_simpson_1_3_with_steps(f, a, b, n):
     factor = h / 3
     result = factor * total
     steps.append(f"<strong>Step 6:</strong> Multiply by \( \\frac{{h}}{{3}} = \\frac{{{h:.6f}}}{{3}} = {factor:.6f} \):")
-    steps.append(f"\[ \int_{{{a_display}}}^{{{b_display}}} {func_latex} \, dx \\approx {factor:.6f} \\times {total:.6f}\]")
+    steps.append(f"\[ \int_{{{a_display}}}^{{{b_display}}} {func_latex} \, dx \\approx {factor:.6f} \\times {total:.6f} \]")
     steps.append(f"<strong>Final Answer:</strong>")
     steps.append(f"\[ \int_{{{a_display}}}^{{{b_display}}} {func_latex} \, dx \\approx {result:.8f} \]")
 
