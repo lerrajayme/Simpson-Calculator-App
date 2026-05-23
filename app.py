@@ -127,11 +127,11 @@ def calculator():
     result = None
     error = None
     steps_html = None
-    a_display = b_display = ""
-    a_num = b_num = None
-    n = None
-    func_str_display = ""
+    a_display = ""
+    b_display = ""
+    func_str = ""
     function_latex = ""
+    n = None
 
     if request.method == 'POST':
         try:
@@ -146,27 +146,27 @@ def calculator():
             a_num = eval_limit(a_str)
             b_num = eval_limit(b_str)
             
-            func_str_display = func_str
             function_latex = python_to_latex(func_str)
             converted_func = add_math_prefix(func_str)
             
             def f(x_val):
                 return eval(converted_func, {"__builtins__": {}}, {"x": x_val, "math": math})
             
-            result, steps_html = composite_simpson_1_3_with_steps(f, a_num, b_num, n, function_latex, a_display, b_display)
-            
+            result, steps_html = composite_simpson_1_3_with_steps(
+                f, a_num, b_num, n, function_latex, a_display, b_display
+            )
         except Exception as e:
             error = str(e)
     
-    return render_template('calculator.html', 
-                           result=result, 
-                           error=error, 
+    # Always render – all variables are defined
+    return render_template('calculator.html',
+                           result=result,
+                           error=error,
                            steps=steps_html,
                            a_display=a_display,
                            b_display=b_display,
                            n=n,
-                           func_str=func_str_display,
+                           func_str=func_str,
                            function_latex=function_latex)
-
 if __name__ == '__main__':
     app.run(debug=True)
