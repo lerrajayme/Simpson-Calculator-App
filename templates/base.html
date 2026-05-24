@@ -7,257 +7,339 @@
     <!-- MathJax for LaTeX -->
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-        padding: 0;
-        margin: 0;
-    }
-
-    /* Glassmorphism navigation */
-    nav {
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(12px);
-        padding: 1rem 2rem;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-    }
-
-    nav a {
-        color: white;
-        margin: 0 1.2rem;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1.05rem;
-        transition: all 0.3s ease;
-        letter-spacing: 0.3px;
-    }
-
-    nav a:hover {
-        color: #ffd966;
-        text-decoration: none;
-        transform: translateY(-2px);
-    }
-
-    /* Main content container - glass card */
-    .container {
-        max-width: 1200px;
-        margin: 2rem auto;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(8px);
-        padding: 2.5rem;
-        border-radius: 32px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.3);
-        transition: transform 0.2s;
-    }
-
-    .container:hover {
-        transform: scale(1.01);
-    }
-
-    h1, h2, h3 {
-        color: #2d3748;
-        font-weight: 700;
-        margin-top: 0;
-    }
-
-    h1 {
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        font-size: 2.2rem;
-        margin-bottom: 1rem;
-    }
-
-    h2 {
-        color: #4a5568;
-        border-left: 6px solid #764ba2;
-        padding-left: 1rem;
-        margin: 1.5rem 0 1rem;
-    }
-
-    p, li {
-        color: #2d3748;
-        line-height: 1.6;
-    }
-
-    /* Form styling */
-    form div {
-        margin-bottom: 1.2rem;
-    }
-
-    label {
-        display: inline-block;
-        width: 180px;
-        font-weight: 600;
-        color: #2d3748;
-    }
-
-    input {
-        padding: 0.7rem 1rem;
-        font-size: 1rem;
-        border: 2px solid #e2e8f0;
-        border-radius: 16px;
-        width: 300px;
-        transition: all 0.3s;
-        background: white;
-    }
-
-    input:focus {
-        outline: none;
-        border-color: #764ba2;
-        box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.2);
-    }
-
-    button {
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        color: white;
-        border: none;
-        padding: 0.7rem 2rem;
-        font-size: 1rem;
-        font-weight: 600;
-        border-radius: 40px;
-        cursor: pointer;
-        transition: all 0.3s;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        margin-top: 0.5rem;
-    }
-
-    button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        background: linear-gradient(135deg, #5a67d8, #6b46a0);
-    }
-
-    /* Error and result boxes */
-    .error {
-        color: #c53030;
-        background: #fed7d7;
-        padding: 1rem;
-        border-radius: 20px;
-        margin-top: 1.5rem;
-        border-left: 6px solid #e53e3e;
-        font-weight: 500;
-    }
-
-    .result {
-        color: #2f855a;
-        background: #c6f6d5;
-        padding: 1rem;
-        border-radius: 20px;
-        margin-top: 1.5rem;
-        border-left: 6px solid #38a169;
-        font-weight: bold;
-        font-size: 1.2rem;
-    }
-
-    /* Example step boxes */
-    .example-step {
-        background: #f7fafc;
-        padding: 1.5rem;
-        margin: 1.5rem 0;
-        border-radius: 24px;
-        border-left: 8px solid #764ba2;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        transition: all 0.2s;
-    }
-
-    .example-step:hover {
-        background: #edf2f7;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        .container {
-            padding: 1.5rem;
-            margin: 1rem;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        label {
-            width: 100%;
-            margin-bottom: 0.3rem;
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a2a 0%, #1a0033 100%);
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
         }
-        input {
-            width: 100%;
+
+        /* Glassmorphism navigation */
+        nav {
+            background: rgba(25, 0, 50, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 20px rgba(156, 39, 176, 0.4), 0 0 10px rgba(156, 39, 176, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #9c27b0;
         }
+
+        /* Logo / Title */
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #ce4aff, #9c27b0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: none;
+        }
+        .logo span {
+            font-size: 1rem;
+            color: #b87cff;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+        }
+
+        /* Nav Links Container */
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
         nav a {
-            margin: 0 0.7rem;
-            font-size: 0.9rem;
+            color: #e0aaff;
+            margin: 0 0.8rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
         }
-    }
 
-    /* Small note styling */
-    small {
-        color: #718096;
-        font-size: 0.8rem;
-        display: block;
-        margin-top: 0.3rem;
-    }
+        nav a:hover {
+            color: #ffffff;
+            background: rgba(156, 39, 176, 0.4);
+            box-shadow: 0 0 12px #ce4aff;
+            transform: translateY(-2px);
+        }
 
-    a {
-        color: #764ba2;
-        text-decoration: none;
-        font-weight: 500;
-    }
+        /* Main content container - glass card */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            background: rgba(15, 5, 30, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 2rem;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(156, 39, 176, 0.5), 0 0 20px rgba(156, 39, 176, 0.3);
+            transition: transform 0.2s;
+        }
 
-    a:hover {
-        text-decoration: underline;
-        color: #553c9a;
-    }
-    .steps-container {
-        background: #f0f4ff;
-        padding: 1.5rem;
-        border-radius: 24px;
-        margin-top: 2rem;
-        border: 1px solid #c3dafe;
-    }
-    .step-by-step {
-        background: transparent; /* mawala ang white background sa kada step */
-    }
-    .step-by-step p {
-        background: transparent;
-        padding: 0;
-        margin-bottom: 1.2rem;
-        box-shadow: none;
-        border-left: none;
-    }
-    .step-by-step p:first-child {
-        margin-top: 0;
-    }
-    .MathJax {
-        overflow-x: auto;
-        overflow-y: hidden;
-    }
-    /* Space between each step (for .step-item) */
-    .step-by-step .step-item {
-        margin-bottom: 1.5rem;
-        padding-bottom: 0.3rem;
-    }
-    ul {
-        padding-left: 1.5rem;  /* or 2rem kung gusto mas lawom */
-        margin-left: 0;
-    }
-    li {
-        margin-bottom: 0.5rem;  /* optional: gap between bullets */
-    }
-</style>
+        .container:hover {
+            transform: scale(1.01);
+        }
+
+        h1, h2, h3 {
+            color: #e0aaff;
+            font-weight: 700;
+            margin-top: 0;
+        }
+
+        h1 {
+            background: linear-gradient(135deg, #ce4aff, #9c27b0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 5px rgba(156,39,176,0.5);
+        }
+
+        h2 {
+            color: #c084fc;
+            border-left: 6px solid #ce4aff;
+            padding-left: 1rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        p, li, label, small {
+            color: #dcd6f0;
+            line-height: 1.6;
+        }
+
+        /* Form styling */
+        form div {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: inline-block;
+            width: 180px;
+            font-weight: 600;
+            color: #c084fc;
+        }
+
+        input {
+            padding: 0.7rem 1rem;
+            font-size: 1rem;
+            border: 2px solid #4a1d6d;
+            border-radius: 16px;
+            width: 300px;
+            transition: all 0.3s;
+            background: #1e102e;
+            color: #e0aaff;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #ce4aff;
+            box-shadow: 0 0 0 3px rgba(206, 74, 255, 0.3);
+        }
+
+        button {
+            background: linear-gradient(135deg, #ce4aff, #9c27b0);
+            color: white;
+            border: none;
+            padding: 0.7rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            margin-top: 0.5rem;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(156, 39, 176, 0.5);
+            background: linear-gradient(135deg, #e06eff, #b341f0);
+        }
+
+        /* Error and result boxes */
+        .error {
+            color: #ffb3b3;
+            background: #3a1a2a;
+            padding: 1rem;
+            border-radius: 20px;
+            margin-top: 1.5rem;
+            border-left: 6px solid #ff6b6b;
+            font-weight: 500;
+        }
+
+        .result {
+            color: #baffc9;
+            background: #1a2a1a;
+            padding: 1rem;
+            border-radius: 20px;
+            margin-top: 1.5rem;
+            border-left: 6px solid #8effaa;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Example step boxes */
+        .example-step {
+            background: rgba(30, 16, 46, 0.8);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 24px;
+            border-left: 8px solid #ce4aff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s;
+        }
+
+        .example-step:hover {
+            background: rgba(40, 20, 60, 0.9);
+            box-shadow: 0 8px 20px rgba(156, 39, 176, 0.3);
+        }
+
+        /* Step-by-step container */
+        .step-by-step {
+            background: transparent;
+        }
+
+        /* Force all text inside steps to be light */
+        .step-by-step .step-item,
+        .step-by-step .step-item p,
+        .step-by-step .step-item div,
+        .step-by-step .step-item span,
+        .step-by-step .step-item li,
+        .step-by-step .step-item .MathJax {
+            color: #e0e0ff !important;
+        }
+
+        /* Strong/bold text (Step 1, etc.) in neon purple */
+        .step-by-step .step-item strong {
+            color: #ce4aff !important;
+            margin-bottom: 1.8rem !important;
+            
+        }
+
+        /* Ensure LaTeX inside steps is also light */
+        .step-by-step .step-item .MathJax *,
+        .step-by-step .step-item mjx-container * {
+            color: #e0e0ff !important;
+        }
+
+        .step-by-step .step-item:not(:last-child) {
+            border-bottom: 1px;
+            padding-bottom: 1rem;
+        }
+        
+        .MathJax,
+        .MathJax *,
+        .mjx-chtml,
+        .mjx-math,
+        .mjx-math *,
+        mjx-container,
+        .mml-container {
+            color: #f0e6ff !important;
+        }
+
+        .MathJax_Display,
+        .mjx-chtml[display="true"] {
+            color: #e0aaff !important;
+        }
+
+        .mi, .mo, .mn, .mtext, .ms, .mrow, .msub, .msup, .msubsup {
+            color: #f0e6ff !important;
+        }
+
+        .mfrac, .msqrt, .mroot {
+            color: #e0aaff !important;
+        }
+        
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 0.8rem;
+                text-align: center;
+            }
+            .container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            label {
+                width: 100%;
+                margin-bottom: 0.3rem;
+            }
+            input {
+                width: 100%;
+            }
+            .nav-links a {
+                margin: 0 0.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        small {
+            color: #9a7bb5;
+            font-size: 0.8rem;
+            display: block;
+            margin-top: 0.3rem;
+        }
+
+        a {
+            color: #ce4aff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #e68aff;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a0f2a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ce4aff;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e68aff;
+        }
+    </style>
 </head>
 <body>
     <nav>
-        <a href="{{ url_for('index') }}">Home</a>
-        <a href="{{ url_for('method') }}">Method</a>
-        <a href="{{ url_for('examples') }}">Examples</a>
-        <a href="{{ url_for('calculator') }}">Calculator</a>
+        <div class="logo">
+            📐 Composite Simpson's 1/3 Rule <span>| Online Calculator</span>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('method') }}">Method</a>
+            <a href="{{ url_for('examples') }}">Examples</a>
+            <a href="{{ url_for('calculator') }}">Calculator</a>
+        </div>
     </nav>
     <div class="container">
         {% block content %}{% endblock %}
